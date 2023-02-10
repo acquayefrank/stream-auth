@@ -21,3 +21,27 @@ stream-auth is short for stream authorization; although the name auth may seem m
 **NB//:**
 
 4. If a user_id has more than three device_id's associated with it at any given time the user would not be granted access.
+
+5. The entire API would be built around the concept of users, this servie would however not be doing user management.
+
+6. Each time a user logs into a new device this service is called, if the service can not create a user object and return a stream_auth token within the session then the requesting client should not stream the video.
+
+
+## Initial Project Setup
+
+It is assumed that you are familiar with docker and have docker setup on your development machine.  
+In case you have not done this, or are unfamilair with docker,  
+kindly visit [docker getting started](https://docs.docker.com/get-started/)
+
+Once done setting up docker, clone the code.  
+Navigate to the stream-auth directory.  
+In case you don't know how to get this done speak to someone on the project who can help.
+
+
+## To build and start an instance of the server for the first time:
+
+1. > $ docker compose up -d
+2. > $ docker-compose exec node /bin/sh
+3. > $ ./scripts/run.sh
+
+Server is accessible at [http://localhost:3000/](http://localhost:3000/)
