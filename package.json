@@ -4,7 +4,8 @@
   "description": "A simple authorization system for a streaming service.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js --legacy-watch",
+    "prod": "node index.js"
   },
   "repository": {
     "type": "git",
