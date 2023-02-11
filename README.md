@@ -1,6 +1,6 @@
 # stream-auth
 
-A simple authorization system for a streaming service. 
+A simple authorization system for a streaming service.
 
 ## What is stream-auth
 
@@ -14,9 +14,9 @@ stream-auth is short for stream authorization; although the name auth may seem m
 
 3. The requesting client, after authorization and authentication, has access to the following data:
 
-    a. user_id - Some unique identifier for a user of the system.
+   a. user_id - Some unique identifier for a user of the system.
 
-    b. device_id - A unique identifier, identifying which device is accessing the API. This may be a bit tricky since this service may be called by another service. In which case the calling service(client) should have obtained this information from the webapp, mobile app etc. 
+   b. device_id - A unique identifier, identifying which device is accessing the API. This may be a bit tricky since this service may be called by another service. In which case the calling service(client) should have obtained this information from the webapp, mobile app etc.
 
 **NB//:**
 
@@ -25,7 +25,6 @@ stream-auth is short for stream authorization; although the name auth may seem m
 5. The entire API would be built around the concept of users, this servie would however not be doing user management.
 
 6. Each time a user logs into a new device this service is called, if the service can not create a user object and return a stream_auth token within the session then the requesting client should not stream the video.
-
 
 ## Initial Project Setup
 
@@ -37,7 +36,6 @@ Once done setting up docker, clone the code.
 Navigate to the stream-auth directory.  
 In case you don't know how to get this done speak to someone on the project who can help.
 
-
 ## To build and start an instance of the server for the first time:
 
 NB// Change the `example.env` file to `.env` and fill in the fields appropraitely
@@ -48,14 +46,13 @@ NB// Change the `example.env` file to `.env` and fill in the fields appropraitel
 
 Server is accessible at [http://localhost:3000/](http://localhost:3000/)
 
-## To create a mongo user 
+## To create a mongo user
 
 1. > $ docker compose up -d
 2. > $ docker-compose exec node /bin/sh
 
-
 Known Issue:
 
-* When using docker on windows it may be a bit slow, [this](https://www.createit.com/blog/make-docker-on-windows-fast-again-2022/) should help.
+- When using docker on windows it may be a bit slow, [this](https://www.createit.com/blog/make-docker-on-windows-fast-again-2022/) should help.
 
-* Sometimes after building the container `nodemod` will not be installed, in that case run `npm install` in the root directory o the project.
+- Sometimes after building the container `nodemod` will not be installed, in that case run `npm install` in the root directory o the project.

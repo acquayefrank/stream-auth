@@ -28,5 +28,8 @@
     "nodemon": "^2.0.20",
     "rotating-file-stream": "^3.1.0",
     "swagger-ui-express": "^4.6.0"
+  },
+  "devDependencies": {
+    "prettier": "2.8.4"
   }
 }

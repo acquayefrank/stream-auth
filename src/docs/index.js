@@ -1,6 +1,6 @@
-'use strict';
-const basicInfo = require('./basicInfo');
+"use strict";
+const basicInfo = require("./basicInfo");
 
 module.exports = {
-    ...basicInfo,
+  ...basicInfo,
 };
