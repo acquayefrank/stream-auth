@@ -40,8 +40,20 @@ In case you don't know how to get this done speak to someone on the project who 
 
 ## To build and start an instance of the server for the first time:
 
+NB// Change the `example.env` file to `.env` and fill in the fields appropraitely
+
 1. > $ docker compose up -d
 2. > $ docker-compose exec node /bin/sh
 3. > $ ./scripts/run.sh
 
 Server is accessible at [http://localhost:3000/](http://localhost:3000/)
+
+## To create a mongo user 
+
+1. > $ docker compose up -d
+2. > $ docker-compose exec node /bin/sh
+
+
+Known Issue:
+
+* When using docker on windows it may be a bit slow, [this](https://www.createit.com/blog/make-docker-on-windows-fast-again-2022/) should help.

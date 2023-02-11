@@ -4,8 +4,8 @@
   "description": "A simple authorization system for a streaming service.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js --legacy-watch",
-    "prod": "node index.js"
+    "dev": "nodemon ./src/index.js --legacy-watch",
+    "prod": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/acquayefrank/stream-auth#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.1",
     "nodemon": "^2.0.20",
