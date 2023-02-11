@@ -44,7 +44,7 @@ NB// Change the `example.env` file to `.env` and fill in the fields appropraitel
 
 1. > $ docker compose up -d
 2. > $ docker-compose exec node /bin/sh
-3. > $ ./scripts/run.sh
+3. > $ npm run dev
 
 Server is accessible at [http://localhost:3000/](http://localhost:3000/)
 
@@ -57,3 +57,5 @@ Server is accessible at [http://localhost:3000/](http://localhost:3000/)
 Known Issue:
 
 * When using docker on windows it may be a bit slow, [this](https://www.createit.com/blog/make-docker-on-windows-fast-again-2022/) should help.
+
+* Sometimes after building the container `nodemod` will not be installed, in that case run `npm install` in the root directory o the project.
