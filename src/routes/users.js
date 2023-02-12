@@ -39,7 +39,7 @@ router.post("/:userId/register-device", async (req, res) => {
       if (err) {
         res.status(500).json(err);
       } else {
-        res.status(201).json(result);
+        res.status(200).json(result);
       }
     });
   }
@@ -48,14 +48,47 @@ router.post("/:userId/register-device", async (req, res) => {
 router.post("/:userId/unregister-device", async (req, res) => {
   const filter = { userId: req.params.userId, deviceId: req.body.deviceId };
   const update = { isActive: false };
-  const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  const options = { upsert: false, new: true, setDefaultsOnInsert: true };
   User.findOneAndUpdate(filter, update, options, (err, result) => {
     if (err) {
       res.status(500).json(err);
     } else {
-      res.status(201).json(result);
+      if (result === null) {
+        res.status(404).json({ message: "Device not found" });
+      } else {
+        res.status(200).json(result);
+      }
     }
   });
+});
+
+router.post("/:userId/unregister-all-devices", async (req, res) => {
+  const filter = { userId: req.params.userId };
+  const update = { isActive: false };
+  const options = { upsert: false, new: true, setDefaultsOnInsert: true };
+  User.updateMany(filter, update, options, (err, result) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      if (result === null) {
+        res.status(404).json({ message: "User not found" });
+      } else {
+        res.status(200).json(result);
+      }
+    }
+  });
+});
+
+router.get("/:userId/:deviceId", async (req, res) => {
+  const userDevice = await User.findOne({
+    userId: req.params.userId,
+    deviceId: req.params.deviceId,
+  });
+  if (userDevice === null) {
+    res.status(404).json({ message: "Device not found" });
+  } else {
+    res.status(200).json(userDevice);
+  }
 });
 
 module.exports = router;

@@ -38,18 +38,21 @@ In case you don't know how to get this done speak to someone on the project who 
 
 ## To build and start an instance of the server for the first time:
 
-NB// Change the `example.env` file to `.env` and fill in the fields appropraitely
+**NB//** Change the `example.env` file to `.env` and fill in the fields appropraitely
 
 1. > $ docker compose up -d
-2. > $ docker-compose exec node /bin/sh
+2. > $ docker compose exec node /bin/sh
 3. > $ npm run dev
 
 Server is accessible at [http://localhost:3000/](http://localhost:3000/)
 
-## To create a mongo user
+## To run tests
 
 1. > $ docker compose up -d
-2. > $ docker-compose exec node /bin/sh
+2. > $ docker compose exec node /bin/sh
+3. > $ npm run test
+
+**NB** you can download a postman collection [here](./src/tests/stream-auth.postman_collection.json) for the purposes of testing.
 
 Known Issue:
 

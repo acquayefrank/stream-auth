@@ -1,0 +1,236 @@
+{
+  "info": {
+    "_postman_id": "6c4e222a-8a32-483a-adef-1daec8641abe",
+    "name": "stream-auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "66034"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Validations",
+              "pm.test(\"API status checked\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.response.to.have.status(200); ",
+              "    pm.expect(responseJson.message).eql(\"welcome to stream-auth\");",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}",
+          "host": ["{{base_url}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register device for user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Register device\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,400]); ",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"deviceId\": \"{{$guid}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}users/U-11/register-device",
+          "host": ["{{base_url}}users"],
+          "path": ["U-11", "register-device"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get devices connected to a user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Get devices\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.response.to.have.status(200); ",
+              "    pm.test('Number of devices returned = ' + responseJson.length, function () {",
+              "    pm.expect(responseJson.length).to.greaterThan(1);",
+              "});",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}users/U-9/",
+          "host": ["{{base_url}}users"],
+          "path": ["U-9", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Unregister device for user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Validations",
+              "pm.test(\"Test device not found\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.response.to.have.status(404); ",
+              "    pm.expect(responseJson.message).eql(\"Device not found\");",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"deviceId\": \"{{$guid}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}users/7/unregister-device",
+          "host": ["{{base_url}}users"],
+          "path": ["7", "unregister-device"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Unregister all users devices",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Unregister multiple devices\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,400]); ",
+              "    pm.expect(responseJson.acknowledged).to.be.eq(true)",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}users/7/unregister-all-devices",
+          "host": ["{{base_url}}users"],
+          "path": ["7", "unregister-all-devices"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check status of a specific device",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Validations",
+              "pm.test(\"Test device not found\", function () { ",
+              "    const responseJson = pm.response.json();",
+              "    pm.response.to.have.status(404); ",
+              "    pm.expect(responseJson.message).eql(\"Device not found\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}users/7/8",
+          "host": ["{{base_url}}users"],
+          "path": ["7", "8"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/",
+      "type": "string"
+    }
+  ]
+}
