@@ -7,8 +7,7 @@ const cors = require("cors");
 const rfs = require("rotating-file-stream");
 const path = require("path");
 const bodyParser = require("body-parser");
-
-const docs = require("./docs");
+const docs = require("./swagger-output.json");
 
 const app = express();
 // // create a rotating write stream

@@ -7,7 +7,9 @@
     "dev": "nodemon ./src/index.js --legacy-watch",
     "prod": "node ./src/index.js",
     "test": "cross-env NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles",
-    "lint": "npx prettier --write ."
+    "lint": "npx prettier --write .",
+    "swagger-autogen": "node ./src/swagger.js",
+    "prep-commit": "npx jest --coverage && npm run swagger-autogen && npm run lint"
   },
   "repository": {
     "type": "git",
